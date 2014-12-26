@@ -9,3 +9,6 @@ config/secrets.json
 public/js/core/models.js
 public/js/core/helpers.js
 .idea
+
+_datastore.json
+_session_store.json
