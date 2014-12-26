@@ -1,0 +1,16 @@
+<fieldset>
+    <div class="control-group">
+        <label for="title" class="control-label">Заголовок</label>
+        <div class="controls">
+            <input type="text" class="span6" placeholder="Введите название поста" name="name" value='<%= post.title %>'/>
+            <input type="text" class="span6" placeholder="url" name="slug" value='<%= post.slug %>'/>
+            <input type="datetime" class="span6" placeholder="Дата публикаци" name="date" value='<%= post.date %>'/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label for="title" class="control-label">Текст</label>
+        <div class="controls">
+            <textarea class="span6" placeholder="Введите текст поста" name="text" ><%= post.text %></textarea>
+        </div>
+    </div>
+</fieldset>
