@@ -18,10 +18,19 @@
 
 var Main = function () {
   this.index = function (req, resp, params) {
-    this.respond({params: params}, {
-      format: 'html'
-    , template: 'app/views/main/index'
-    });
+
+      geddy.model.Blog.all(function(err, blogs) {
+          if (err) {
+              throw err;
+          }
+          self.respond(
+              {'blogs': blogs},
+              {
+                  format:   'html',
+                  template: 'app/views/blogs/index'
+              }
+          );
+      });
   };
 };
 

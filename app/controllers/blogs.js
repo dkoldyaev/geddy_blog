@@ -1,4 +1,5 @@
 var Blogs = function () {
+
   this.respondsWith = ['html', 'json', 'xml', 'js', 'txt'];
 
   this.index = function (req, resp, params) {
@@ -8,7 +9,13 @@ var Blogs = function () {
       if (err) {
         throw err;
       }
-      self.respondWith(blogs, {type:'Blog'});
+      self.respond(
+          {'blogs': blogs},
+          {
+            format:   'html',
+            template: 'app/views/blogs/index'
+          }
+      );
     });
   };
 
@@ -35,6 +42,20 @@ var Blogs = function () {
 
   this.show = function (req, resp, params) {
     var self = this;
+
+    geddy.model.Blog.get({slug:params.blog_slug}, function(err, blog) {
+
+      if (err) {
+        throw err;
+      }
+      if (!blog) {
+        throw new geddy.errors.NotFoundError();
+      }
+      else {
+        self.respondWith(blog);
+      }
+
+    });
 
     geddy.model.Blog.first(params.id, function(err, blog) {
       if (err) {

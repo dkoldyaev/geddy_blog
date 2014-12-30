@@ -19,7 +19,13 @@
 
 var router = new geddy.RegExpRouter();
 
-router.get('/').to('Main.index');
+router.get('/').to('Blogs.index');
+
+router.resource('blogs');
+router.resource('posts');
+
+router.get('/:blog_slug').to('Blogs.show');
+router.get('/:blog_slug', 'POST').to('Posts.blog_list');
 
 // Basic routes
 // router.match('/moving/pictures/:id', 'GET').to('Moving.pictures');
@@ -38,7 +44,4 @@ router.get('/').to('Main.index');
 //   this.resource('countries');
 //   this.get('/print(.:format)').to('Hemispheres.print');
 // });
-
-router.resource('blogs');
-router.resource('posts');
 exports.router = router;

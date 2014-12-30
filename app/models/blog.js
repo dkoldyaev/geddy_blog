@@ -1,7 +1,8 @@
 var Blog = function () {
 
   this.defineProperties({
-    name:       {type:'string',   required:true}
+    name:       {type:'string',   required:true},
+    slug:       {type:'string',   required:false}
   });
 
   /*
